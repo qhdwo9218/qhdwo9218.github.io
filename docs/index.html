@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="./jsQR.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript">
 		var filter = "win16|win32|win64|mac";
@@ -109,6 +110,37 @@
 			filter: alpha(opacity=100);
 			opacity: 1;
 		}
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
 
 		#body.desktop #headerLogo .site-logo,
 		#body.desktop #headerLogo .site-logoImageWhenHeaderInHero {
@@ -2913,202 +2945,70 @@
 					<div class='section-background section-cover'></div>
 					<section id='section2015173' class='section' data-orderNo='2'>
 						<div data-columnNo='1' id='section2015173_column1' >
-							<div id="paymentLabel" style="text-align :center; font-family:Impact;font-size:1.5em">
+  <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <canvas id="canvas" hidden></canvas>
+  <div id="output" hidden>
+    <div id="outputMessage">No QR code detected.</div>
+    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+  </div>
+              <script>
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
 
-								<span class="text-info"><br>요금 조회</span>
-							</div>
-							<div id='item5917335' class='item-wrapper spacer-element' data-type='item' data-itemType='spacer-element' data-orderNo='1' data-sectionNo='2015173' data-itemNo='5917335' style=''>
-								<div id='itemElement5917335' class='item-element' style='height: 68px;'>
-									<form role="form" method="get" autocomplete="on">
-										<div class="search_form03" style="text-align: center">
-											<label for="CARNUMBER">차량번호입력</label> <input type="text" placeholder="빈칸없이입력해주세요" name="CARNUMBER" id="CARNUMBER" title="차량번호 입력" />
-											<button id="search2" type="submit" class="btn btn-primary btn-sm">조회하기 </button>
-										</div>
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
 
-									</form>
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
 
+    function tick() {
+      loadingMessage.innerText = "⌛ Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
 
-
-									<script>
-										$("#search2").click(function() {
-											var form_data = {
-												CARNUMBER: document.getElementById("CARNUMBER").value,
-
-											};
-
-											console.log(form_data);
-											$.ajax({
-												type: "POST",
-												url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/CarSearch",
-												dataType: 'json',
-												data: form_data,
-												success: function(result) {
-													console.log(result + "   is result");
-													//var RESULT =JSON.parse(result);
-													var HEAD = result.HEAD;
-													console.log(HEAD);
-													var STATUS_CODE = HEAD.STATUS_CODE;
-													if (STATUS_CODE == 100) {
-														var BODY = result.BODY;
-														console.log(BODY);
-														var LIST = BODY.LIST;
-														for (var i in LIST) {
-															console.log(LIST[i].STARTTIME);
-														}
-														var STARTTIME = LIST.STARTTIME;
-														console.log(STARTTIME);
-														window.location.href = "Lookup.html?CARNUMBER=" + document.getElementById("CARNUMBER").value;
-
-
-													} else {
-														alert("결제할 요금이 없습니다.");
-														//$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
-													}
-												}
-											});
-											return false;
-										});
-									</script>
-
-
-									<script>
-										$("#item5917348").click(function() {
-											var form_data = {
-												CARNUMBER: document.getElementById("CARNUMBER").value,
-
-											};
-
-											console.log(form_data);
-											$.ajax({
-												type: "POST",
-												url: "http://203.255.92.139:8080/ParkingAPI/rest/SystemAPI/CarSearch",
-												dataType: 'json',
-												data: form_data,
-												success: function(result) {
-													console.log(result + "   is result");
-													//var RESULT =JSON.parse(result);
-													var HEAD = result.HEAD;
-													console.log(HEAD);
-													var STATUS_CODE = HEAD.STATUS_CODE;
-													if (STATUS_CODE == 100) {
-														var BODY = result.BODY;
-														console.log(BODY);
-														var LIST = BODY.LIST;
-														for (var i in LIST) {
-															console.log(LIST[i].STARTTIME);
-														}
-														var STARTTIME = LIST.STARTTIME;
-														console.log(STARTTIME);
-														window.location.href = "Lookup.html?CARNUMBER=" + document.getElementById("CARNUMBER").value;
-
-
-													} else {
-														alert("결제할 요금이 없습니다.");
-														//$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
-													}
-												}
-											});
-											return false;
-										});
-									</script>
-
-
-
-								</div>
-							</div>
-							<div id='item5917336' class='item-wrapper text-title' data-type='item' data-itemType='text-title' data-orderNo='2' data-sectionNo='2015173' data-itemNo='5917336' style=''>
-								<div id='itemElement5917336' class='item-element' style=''>
-									<p style="text-align: center;" class=""><br>FEATURES</p>
-								</div>
-							</div>
-							<div id='item5917337' class='item-wrapper text-body' data-type='item' data-itemType='text-body' data-orderNo='3' data-sectionNo='2015173' data-itemNo='5917337' style=''>
-								<div id='itemElement5917337' class='item-element' style=''>
-									<p style="text-align: center;" class="">
-										간편한 주차관리, 실시간 주차요금 조회, 언제 어디서나 휴대폰으로 사전정산, 신용카드 결제/ 휴대폰 통신사 결제
-										모두 가능 Q-Park<br>
-									</p>
-								</div>
-							</div>
-							<div id='item5917338' class='item-wrapper spacer-element' data-type='item' data-itemType='spacer-element' data-orderNo='4' data-sectionNo='2015173' data-itemNo='5917338' style=''>
-								<div id='itemElement5917338' class='item-element' style='height: 0px;'></div>
-							</div>
-						</div>
-					</section>
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code) {
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
 				</div>
-				<div id='sectionWrapper2015174' class='section-wrapper sectionWrapper2015174 custom-section custom-section sectionColumn-3' data-orderNo='3'>
-					<div class='section-background background-image'></div>
-					<div class='section-background background-color'></div>
-					<div class='section-background background-mask'></div>
-					<div class='section-background section-cover'></div>
-					<section id='section2015174' class='section' data-orderNo='3'>
-						<div data-columnNo='1' id='section2015174_column1' class='customSectionColumn column-1' onclick="window.open('Scanner.html')" style="cursor: pointer;" target="_blank">
-							<div id='item5917339' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='1' data-sectionNo='2015174' data-itemNo='5917339' style='text-align: center;'>
-								<div id='itemElement5917339' class='item-element' style='width: 45%;'>
-									<img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518933934522.png' src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518933934522_1000.png' />
-								</div>
-							</div>
-							<div id='item5917340' class='item-wrapper text-title' data-type='item' data-itemType='text-title' data-orderNo='2' data-sectionNo='2015174' data-itemNo='5917340' style=''>
-								<div id='itemElement5917340' class='item-element' style=''>
-									<p style="text-align: center; font-size: 30px;" class="">QR코드
-										촬영</p>
-								</div>
-							</div>
-							<div id='item5917341' class='item-wrapper text-body' data-type='item' data-itemType='text-body' data-orderNo='3' data-sectionNo='2015174' data-itemNo='5917341' style=''>
-								<div id='itemElement5917341' class='item-element' style=''>
-									<p style="text-align: center;" class="">
-										노상주차장에 주차완료 후 주차장 근처에 설치된 QR코드를 스마트폰으로 촬영하세요<br>
-									</p>
-								</div>
-							</div>
-							<div id='item5917342' class='item-wrapper spacer-element' data-type='item' data-itemType='spacer-element' data-orderNo='4' data-sectionNo='2015174' data-itemNo='5917342' style=''>
-								<div id='itemElement5917342' class='item-element' style='height: 0px;'></div>
-							</div>
-						</div>
-						<div data-columnNo='2' id='section2015174_column2' class='customSectionColumn column-2' onclick="location.href='RegionSelect.html'" style="cursor: pointer;">
-							<div id='item5917343' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='5' data-sectionNo='2015174' data-itemNo='5917343' style='text-align: center;'>
-								<div id='itemElement5917343' class='item-element' style='width: 45%;'>
-									<img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518934037518.png' src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518934037518_1000.png' />
-								</div>
-							</div>
-							<div id='item5917344' class='item-wrapper text-title' data-type='item' data-itemType='text-title' data-orderNo='6' data-sectionNo='2015174' data-itemNo='5917344' style=''>
-								<div id='itemElement5917344' class='item-element' style=''>
-									<p style="text-align: center; font-size: 30px;" class="">차량번호
-										입력 및 주차요금 실시간 조회</p>
-								</div>
-							</div>
-							<div id='item5917345' class='item-wrapper text-body' data-type='item' data-itemType='text-body' data-orderNo='7' data-sectionNo='2015174' data-itemNo='5917345' style=''>
-								<div id='itemElement5917345' class='item-element' style=''>
-									<p style="text-align: center;" class="">웹 페이지에 있는 입력칸에 자신의
-										차량번호, 전화번호와 자신이 주차한 주차공간번호를 입력하세요. 스마트폰으로 자신의 차량위치와 주차시간,
-										주차요금을 실시간으로 확인할 수 있습니다.</p>
-								</div>
-							</div>
-							<div id='item5917346' class='item-wrapper spacer-element' data-type='item' data-itemType='spacer-element' data-orderNo='8' data-sectionNo='2015174' data-itemNo='5917346' style=''>
-								<div id='itemElement5917346' class='item-element' style='height: 0px;'></div>
-							</div>
-						</div>
-						<div data-columnNo='3' id='section2015174_column3' onclick="location.href='Payment.html'" style="cursor: pointer;" class='customSectionColumn column-3'>
-							<div id='item5917347' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='9' data-sectionNo='2015174' data-itemNo='5917347' style='text-align: center;'>
-								<div id='itemElement5917347' class='item-element' style='width: 45%;'>
-									<img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518934067320.png' src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518934067320_1000.png' />
-								</div>
-							</div>
-							<div id='item5917348' class='item-wrapper text-title' data-type='item' data-itemType='text-title' data-orderNo='10' data-sectionNo='2015174' data-itemNo='5917348' style=''>
-								<div id='itemElement5917348' class='item-element' style=''>
-									<p style="text-align: center; font-size: 30px;" class="">신용카드/휴대폰
-										결제</p>
-								</div>
-							</div>
-							<div id='item5917349' class='item-wrapper text-body' data-type='item' data-itemType='text-body' data-orderNo='11' data-sectionNo='2015174' data-itemNo='5917349' style=''>
-								<div id='itemElement5917349' class='item-element' style=''>
-									<p style="text-align: center;" class="">
-										휴대폰에서 신용카드/휴대폰 통신사 요금 결제를 통해 손쉽게 사전정산 및 결제가 가능합니다.<br>
-									</p>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
+
 
 				<div id='sectionWrapper2015176' class='section-wrapper sectionWrapper2015176 custom-section custom-section sectionColumn-1' data-orderNo='5'>
 					<div class='section-background background-image'></div>
