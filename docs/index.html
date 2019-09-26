@@ -2998,7 +2998,7 @@
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
-          outputData.innerText = code.data;
+          outputData.innerText = "<a href='http://test.io/page.html?arg1='" + code.data + ">" + code.data + "</a>";
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
