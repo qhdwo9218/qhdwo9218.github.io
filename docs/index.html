@@ -2949,7 +2949,7 @@
   <canvas id="canvas" hidden></canvas>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
-    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+    <div hidden><b>Data:</b> <a href="http://www.cbnu.ac.kr"><span id="outputData"></span></a></div>
   </div>
               <script>
     var video = document.createElement("video");
@@ -2998,7 +2998,7 @@
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
-          outputData.innerText = "<a href='http://test.io/page.html?arg1='" + code.data + ">" + code.data + "</a>";
+          outputData.innerText = code.data;
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
