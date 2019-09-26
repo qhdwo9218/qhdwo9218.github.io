@@ -2949,7 +2949,7 @@
   <canvas id="canvas" hidden></canvas>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
-    <div hidden><b><a href="http://www.cbnu.ac.kr">Move to</a> : </b> <span id="outputData"></span></div>
+    <div hidden><b>Move to : </b> <span id="outputData"></span></div>
   </div>
               <script>
     var video = document.createElement("video");
@@ -2999,7 +2999,14 @@
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
-          window.location.href='http://www.cbnu.ac.kr';
+          if (code.data == '청주개신동 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+          } else if (code.data == '청주충북대 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
+          } else if (code.data == '대전 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
+          } 
+
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
