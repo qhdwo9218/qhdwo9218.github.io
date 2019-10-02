@@ -66,17 +66,9 @@
     var loadingMessage = document.getElementById("loadingMessage");
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
-    var outputData = document.getElementById("outputData");  
+    var outputData = document.getElementById("outputData");
 
-    if (code.data == '청주개신동 주차장') {
-          window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-      } else if (code.data == '청주충북대 주차장') {
-          window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
-      } else if (code.data == '대전 주차장') {
-          window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
-      } else {
-          window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-      }
+
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -110,10 +102,15 @@
           inversionAttempts: "dontInvert",
         });
         if (code) {
-          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          if (code.data == '청주개신동 주차장') {
+                window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+            } else if (code.data == '청주충북대 주차장') {
+                window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
+            } else if (code.data == '대전 주차장') {
+                window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
+            } else {
+                window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+            }
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
