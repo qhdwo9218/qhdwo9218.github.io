@@ -78,14 +78,27 @@
       canvas.strokeStyle = color;
       canvas.stroke();
     }
+    var constraints = { audio: true, video: { width: 1280, height: 720 } };
 
     // Use facingMode: environment to attemt to get the front camera on phones
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-      video.srcObject = stream;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.play();
-      requestAnimationFrame(tick);
-    });
+    // navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+    //   video.srcObject = stream;
+    //   video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+    //   video.play();
+    //   requestAnimationFrame(tick);
+    // });
+
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(function(mediaStream) {
+      var video = document.querySelector('video');
+      video.srcObject = mediaStream;
+      video.onloadedmetadata = function(e) {
+        video.play();
+      };
+    })
+    .catch(function(err) { console.log(err.name + ": " + err.message); });
+
+
 
     function tick() {
       loadingMessage.innerText = "⌛ Loading video..."
