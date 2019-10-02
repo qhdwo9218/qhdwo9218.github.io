@@ -53,7 +53,7 @@
 </head>
 <body>
 
-<div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
   <canvas id="canvas" hidden></canvas>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
@@ -100,37 +100,45 @@
           inversionAttempts: "dontInvert",
         });
         if (code) {
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-
+          outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
-          <script>
-                  outputData.innerText = "<a href="www.naver.com=" + code.data + ">" + code.data+"</a>";
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
+</body>
+</html>
+<script>
+<<<<<<< HEAD
+          outputData.innerText = "<a href="www.naver.com=" + code.data + ">" + code.data+"</a>";
+=======
+          outputData.innerText = code.data;
+          if (code.data == '청주개신동 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+          } else if (code.data == '청주충북대 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
+          } else if (code.data == '대전 주차장') {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
+          } else {
+              window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+          }
 
-                  <<<<<<< HEAD
-                            outputData.innerText = "<a href="www.naver.com=" + code.data + ">" + code.data+"</a>";
-                  =======
-                            outputData.innerText = code.data;
-                            if (code.data == '청주개신동 주차장') {
-                                window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-                            } else if (code.data == '청주충북대 주차장') {
-                                window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
-                            } else if (code.data == '대전 주차장') {
-                                window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
-                            } else {
-                                window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-                            }
-
-                  >>>>>>>
-                          } else {
-                            outputMessage.hidden = false;
-                            outputData.parentElement.hidden = true;
-                          }
-                        }
-                        requestAnimationFrame(tick);
-                      }
-
-                    </script>
-                  </body>
-                  </html>
-                  				</div>
+>>>>>>> 89ab7bae9721e8331845d9fa79edb80ce70f6089
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
+				</div>
