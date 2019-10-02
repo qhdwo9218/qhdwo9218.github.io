@@ -66,7 +66,17 @@
     var loadingMessage = document.getElementById("loadingMessage");
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
-    var outputData = document.getElementById("outputData");
+    var outputData = document.getElementById("outputData");  
+
+    if (code.data == '청주개신동 주차장') {
+          window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+      } else if (code.data == '청주충북대 주차장') {
+          window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
+      } else if (code.data == '대전 주차장') {
+          window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
+      } else {
+          window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
+      }
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -117,28 +127,3 @@
   </script>
 </body>
 </html>
-<script>
-<<<<<<< HEAD
-          outputData.innerText = "<a href="www.naver.com=" + code.data + ">" + code.data+"</a>";
-=======
-          outputData.innerText = code.data;
-          if (code.data == '청주개신동 주차장') {
-              window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-          } else if (code.data == '청주충북대 주차장') {
-              window.location.href='http://203.255.92.59:8080/ParkingSystem/check2.html';
-          } else if (code.data == '대전 주차장') {
-              window.location.href='http://203.255.92.59:8080/ParkingSystem/check3.html';
-          } else {
-              window.location.href='http://203.255.92.59:8080/ParkingSystem/check.html';
-          }
-
->>>>>>> 89ab7bae9721e8331845d9fa79edb80ce70f6089
-        } else {
-          outputMessage.hidden = false;
-          outputData.parentElement.hidden = true;
-        }
-      }
-      requestAnimationFrame(tick);
-    }
-  </script>
-				</div>
