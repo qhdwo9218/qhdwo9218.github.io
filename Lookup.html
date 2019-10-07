@@ -50,7 +50,7 @@
 			// console.log(form_data);
 			$.ajax({
 				type: "POST",
-				url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/CarSearch",
+				url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/CarSearch",
 				dataType: 'json',
 				data: form_data,
 				success: function(result) {
@@ -3282,7 +3282,7 @@
 					};
 					$.ajax({
 						type: "POST",
-						url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/payMent",
+						url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/payMent",
 						dataType: 'json',
 						data: form_data,
 						success: function(result) {

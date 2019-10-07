@@ -2760,14 +2760,14 @@
 
 										};
 
-										console.log(form_data);
+									//	console.log(form_data);
 										$.ajax({
 											type: "POST",
-											url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/Login",
+											url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/Login",
 											dataType: 'json',
 											data: form_data,
 											success: function(result) {
-												console.log(result);
+											//	console.log(result);
 												//var RESULT =JSON.parse(result);
 												var HEAD = result.HEAD;
 												console.log(HEAD);
@@ -2787,15 +2787,15 @@
 														sessionStorage.setItem('id', document.getElementById("ID").value);
 														var position = sessionStorage.getItem('name');
 														var userId = sessionStorage.getItem('id');
-														console.log(position);
-														console.log(userId);
+														//console.log(position);
+													//	console.log(userId);
 														alert(userName + "님 환영합니다.");
 														location.href = "/ParkingSystem";
 													}
 
 												} else if (STATUS_CODE == 106) {
 													alert("ID 또는 PW를 확인해주세요");
-													console.log("????");
+													//console.log("????");
 
 												}
 											}
@@ -2820,14 +2820,14 @@
 
 									$.ajax({
 										type: "POST",
-										url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/Login",
+										url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/Login",
 										dataType: 'json',
 										data: form_data,
 										success: function(result) {
-											console.log(result);
+										//	console.log(result);
 											//var RESULT =JSON.parse(result);
 											var HEAD = result.HEAD;
-											console.log(HEAD);
+											//console.log(HEAD);
 											var BODY = result.BODY;
 
 											var LIST = BODY.LIST;
@@ -2836,10 +2836,10 @@
 
 
 
-											console.log(BODY);
-											console.log(LIST);
-											console.log(userEmail);
-											console.log(userName);
+											// console.log(BODY);
+											// console.log(LIST);
+											// console.log(userEmail);
+											// console.log(userName);
 
 											if (STATUS_CODE == 100) {
 												var userEmail = LIST[0].EMAIL;
@@ -2850,15 +2850,15 @@
 													sessionStorage.setItem('id', document.getElementById("ID").value);
 													var position = sessionStorage.getItem('name');
 													var userId = sessionStorage.getItem('id');
-													console.log(position);
-													console.log(userId);
+											//		console.log(position);
+											//		console.log(userId);
 													alert(userName + "님 환영합니다.");
 													location.href = "/ParkingSystem";
 												}
 
 											} else {
 												alert("ID 또는 PW를 확인해주세요");
-												console.log("????");
+										//		console.log("????");
 
 											}
 										}

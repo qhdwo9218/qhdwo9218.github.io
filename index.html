@@ -2981,7 +2981,7 @@
 											console.log(form_data);
 											$.ajax({
 												type: "POST",
-												url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/CarSearch",
+												url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/CarSearch",
 												dataType: 'json',
 												data: form_data,
 												success: function(result) {
@@ -3013,47 +3013,7 @@
 									</script>
 
 
-									<script>
-										$("#item5917348").click(function() {
-											var form_data = {
-												CARNUMBER: document.getElementById("CARNUMBER").value,
-
-											};
-
-											console.log(form_data);
-											$.ajax({
-												type: "POST",
-												url: "http://203.255.92.139:8080/ParkingAPI/rest/SystemAPI/CarSearch",
-												dataType: 'json',
-												data: form_data,
-												success: function(result) {
-													console.log(result + "   is result");
-													//var RESULT =JSON.parse(result);
-													var HEAD = result.HEAD;
-													console.log(HEAD);
-													var STATUS_CODE = HEAD.STATUS_CODE;
-													if (STATUS_CODE == 100) {
-														var BODY = result.BODY;
-														console.log(BODY);
-														var LIST = BODY.LIST;
-														for (var i in LIST) {
-															console.log(LIST[i].STARTTIME);
-														}
-														var STARTTIME = LIST.STARTTIME;
-														console.log(STARTTIME);
-														window.location.href = "Lookup.html?CARNUMBER=" + document.getElementById("CARNUMBER").value;
-
-
-													} else {
-														alert("결제할 요금이 없습니다.");
-														//$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
-													}
-												}
-											});
-											return false;
-										});
-									</script>
-
+								
 
 
 								</div>
