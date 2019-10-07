@@ -35,7 +35,7 @@
 			$.ajax({
 				crossOrigin : true,
 				type: "POST",
-				url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/amountCheck",
+				url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/amountCheck",
 				dataType: 'json',
 				success: function(result) {
 					//var RESULT =JSON.parse(result);
@@ -3123,7 +3123,7 @@
 						$.ajax({
 							crossOrigin : true,
 							type: "POST",
-							url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/accessTime",
+							url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/accessTime",
 							dataType: 'json',
 							data: form_data,
 							success: function(result) {
@@ -3227,7 +3227,7 @@
 								$.ajax({
 									crossOrigin : true,
 									type: "POST",
-									url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/payMent",
+									url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/payMent",
 									dataType: 'json',
 									data: form_data,
 									success: function(result) {
@@ -3238,7 +3238,7 @@
 											$.ajax({
 												crossOrigin : true,
 												type: "POST",
-												url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/Receipt",
+												url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/Receipt",
 												dataType: 'json',
 												data: form_data2,
 												success: function(result) {
