@@ -42,7 +42,7 @@
 					if (STATUS_CODE == 100) {
 						var BODY = result.BODY;
 						var LIST = BODY.LIST;
-						console.log(LIST);
+					//	console.log(LIST);
 						for (var i = 0; i < LIST.length; i++) {
 							var starttime = LIST[i].STARTTIME;
 							var startdate = LIST[i].STARTDATE;
@@ -56,15 +56,15 @@
 
 								var pardate = parse(formatDate(parse(STARTDATE)));
 								var nowDate = parse(formatDate(cDt));
-								console.log(pardate);
-								console.log(nowDate);
+								//console.log(pardate);
+							//	console.log(nowDate);
 								var useTime = nowDate - pardate;
-								console.log(useTime);
+							//	console.log(useTime);
 								userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
-								console.log(userAmount);
+							//	console.log(userAmount);
 								if (userAmount == 0 || userAmount < 0) userAmount = 500;
 
-								console.log(userAmount);
+							//	console.log(userAmount);
 
 								if (area == 1) {
 									if (carnumber == "" || carnumber == "null") carnumber = "차량번호 입력요망";
@@ -160,6 +160,9 @@
 
 			return year + '-' + monthNames[monthIndex] + '-' + day + " " + hour + ":" + minute + ":" + second;
 		}
+
+
+					location.reload();
 	</script>
 
 	<style>
