@@ -17,7 +17,7 @@
 				crossOrigin : true,
 				type: "POST",
 				url: "http://203.255.92.59:8080/ParkingAPI/rest/SystemAPI/ParkingCheck",
-				dataType: 'json',
+				dataType: 'proxyJsonp',
 				success: function(result) {
 					var HEAD = result.HEAD;
 					var STATUS_CODE = HEAD.STATUS_CODE;
