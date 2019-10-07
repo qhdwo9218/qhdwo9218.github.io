@@ -9,13 +9,11 @@
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.ajax-cross-origin.min.js"></script>
+	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> -->
 
 	<script>
 		$(document).ready(function() {
 			$.ajax({
-				crossOrigin : true,
 				type: "POST",
 				url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/ParkingCheck",
 				dataType: 'json',

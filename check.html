@@ -9,8 +9,7 @@
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.ajax-cross-origin.min.js"></script>
+	<!-- <script type="text/javascript" src="/js/jquery.ajax-cross-origin.min.js"></script> -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 	<script>
@@ -33,7 +32,6 @@
 			var newDate = new Date();
 
 			$.ajax({
-				crossOrigin : true,
 				type: "POST",
 				url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/amountCheck",
 				dataType: 'json',
@@ -3121,7 +3119,6 @@
 
 						console.log(form_data);
 						$.ajax({
-							crossOrigin : true,
 							type: "POST",
 							url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/accessTime",
 							dataType: 'json',
@@ -3225,7 +3222,6 @@
 									AREA: getAREA
 								};
 								$.ajax({
-									crossOrigin : true,
 									type: "POST",
 									url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/payMent",
 									dataType: 'json',
@@ -3236,7 +3232,6 @@
 										if (STATUS_CODE == 100) {
 											// console.log(form_data2);
 											$.ajax({
-												crossOrigin : true,
 												type: "POST",
 												url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/Receipt",
 												dataType: 'json',
