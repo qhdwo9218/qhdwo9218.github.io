@@ -42,7 +42,7 @@
 					if (STATUS_CODE == 100) {
 						var BODY = result.BODY;
 						var LIST = BODY.LIST;
-						console.log(LIST);
+						// console.log(LIST);
 						for (var i = 0; i < LIST.length; i++) {
 							var starttime = LIST[i].STARTTIME;
 							var startdate = LIST[i].STARTDATE;
@@ -56,15 +56,15 @@
 
 								var pardate = parse(formatDate(parse(STARTDATE)));
 								var nowDate = parse(formatDate(cDt));
-								console.log(pardate);
-								console.log(nowDate);
+								// console.log(pardate);
+								// console.log(nowDate);
 								var useTime = nowDate - pardate;
-								console.log(useTime);
+								// console.log(useTime);
 								userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
-								console.log(userAmount);
+								// console.log(userAmount);
 								if (userAmount == 0 || userAmount < 0) userAmount = 500;
 
-								console.log(userAmount);
+								// console.log(userAmount);
 
 								if (area == 1) {
 									if (carnumber == ""|| carnumber=="null") carnumber = "차량번호 입력요망";
@@ -3107,7 +3107,7 @@
 
 				<script>
 					$("#in").click(function() {
-						console.log(window.sessionStorage.getItem('id'));
+						// console.log(window.sessionStorage.getItem('id'));
 						var form_data = {
 							AREA: document.getElementById("areaSelect2").value,
 							CARNUMBER: document.getElementById("CARNUMBER").value,
@@ -3116,17 +3116,17 @@
               REGION:'3'
 						};
 
-						console.log(form_data);
+						// console.log(form_data);
 						$.ajax({
 							type: "POST",
 							url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/accessTime",
 							dataType: 'json',
 							data: form_data,
 							success: function(result) {
-								console.log(result + "   is result");
+								// console.log(result + "   is result");
 								//var RESULT =JSON.parse(result);
 								var HEAD = result.HEAD;
-								console.log(HEAD);
+								// console.log(HEAD);
 								var STATUS_CODE = HEAD.STATUS_CODE;
 								if (STATUS_CODE == 100) {
 									alert("정상적으로 주차되었습니다.");
@@ -3176,7 +3176,7 @@
 						else if (getAREA == 4) payment = document.getElementById("textAmount4").innerHTML;
 						else if (getAREA == 5) payment = document.getElementById("textAmount5").innerHTML;
 						else if (getAREA == 6) payment = document.getElementById("textAmount6").innerHTML;
-						console.log(payment);
+						// console.log(payment);
 
 						var form_data = {
 							AREA: document.getElementById("areaSelect").value
@@ -3197,7 +3197,7 @@
 
 						};
 
-						console.log(form_data);
+						// console.log(form_data);
 						IMP.request_pay({
 							pg: 'inicis', // version 1.1.0부터 지원.
 							pay_method: 'card',
@@ -3237,13 +3237,13 @@
 												success: function(result) {
 													var HEAD = result.HEAD;
 													var STATUS_CODE = HEAD.STATUS_CODE;
-													console.log(HEAD);
+													// console.log(HEAD);
 													if (STATUS_CODE == 100) {
 														alert("정상적으로 출차되었습니다.");
 														location.reload();
 													} else {
 														console.log(STATUS_CODE);
-														console.log("읭?");
+														// console.log("읭?");
 
 													}
 												}
