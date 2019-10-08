@@ -2972,26 +2972,21 @@
 							var code = jsQR(imageData.data, imageData.width, imageData.height, {
 								inversionAttempts: "dontInvert",
 							});
-
-			 if (code.data == 'http://m.site.naver.com/0tSf0') {
-				 location.href='https://qhdwo9218.github.io/check.html';
-			 } else if (code.data == '청주충북대 주차장') {
-				 window.location.href='https://203.255.92.59:10443/ParkingSystem/check2.html';
-			 } else if (code.data == '대전 주차장') {
-				 window.location.href='https://203.255.92.59:10443/ParkingSystem/check3.html';
-			 } else {
-				 window.location.href='https://203.255.92.59:10443/ParkingSystem/check.html';
-			 }
-			 outputMessage.hidden = true;
-			 outputData.parentElement.hidden = false;
-			 outputData.innerText = code.data;
-		  else {
-			 outputMessage.hidden = false;
-			 outputData.parentElement.hidden = true;
-		 }
-	 }
-	 requestAnimationFrame(tick);
- }
+							if (code) {
+								drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+								drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+								drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+								drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+								outputMessage.hidden = true;
+								outputData.parentElement.hidden = false;
+								outputData.innerText = code.data;
+							} else {
+								outputMessage.hidden = false;
+								outputData.parentElement.hidden = true;
+							}
+						}
+						requestAnimationFrame(tick);
+					}
 				</script>
 
 
