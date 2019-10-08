@@ -54,14 +54,10 @@
 				dataType: 'json',
 				data: form_data,
 				success: function(result) {
-					// console.log(result + "   is result");
-
 					var HEAD = result.HEAD;
-					// console.log("HEAD IS" + HEAD);
 					var STATUS_CODE = HEAD.STATUS_CODE;
 					if (STATUS_CODE == 100) {
 						var BODY = result.BODY;
-						// console.log("BODY IS" + BODY);
 						var LIST = BODY.LIST;
 						if(LIST != null)
 						for (var i in LIST) {
@@ -75,23 +71,19 @@
 						else if (REGIONNAME == '내수로') imgUrl = "img/Region_2.png";
 						else if (REGIONNAME == '율량로') imgUrl = "img/Region_1.png";
 
+
 						var pardate = parse(formatDate(parse(STARTDATE)));
 						var nowDate = parse(formatDate(cDt));
-
 						var useTime = nowDate - pardate;
-					//	console.log(useTime);
-						userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
-					//	console.log(userAmout);
 
-						if(userAmount <0 || userAmount ==0) userAmount = 500;
+						userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
+
+						if (userAmount == 0 || userAmount < 0) userAmount = 500;
 
 						document.getElementById('userAmount').innerHTML = userAmount + "원";
 						document.getElementById('REGIONNAME').innerHTML = REGIONNAME;
 						var img = document.getElementById('imgUrl');
 						img.src = imgUrl;
-
-
-
 					} else {
 						document.getElementById('imgUrl').style.display ="none";
 						document.getElementById('REGIONNAME').innerHTML = "결제할 금액이 없습니다.";
@@ -113,13 +105,9 @@
 			var hour = str.substring(11, 13);
 			var minute = str.substring(14, 16);
 			var second = str.substring(17, 19);
-
-
 			return new Date(year, month - 1, day, hour, minute, second);
 
 		}
-
-
 		function formatDate(date) {
 			var monthNames = [
 				"01", "02", "03",
@@ -129,11 +117,12 @@
 			];
 
 			var amHour = [
-				"00","01", "02", "03",
+				"00", "01", "02", "03",
 				"04", "05", "06", "07",
 				"08", "09",
 			]
 			var day = date.getDate();
+			if (day < 10) day = "0" + day;
 			var monthIndex = date.getMonth();
 			var year = date.getFullYear();
 
@@ -2689,8 +2678,6 @@
 			if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
 				$('head').append('<script data-main=\'https://static.sixshop.com/resources/build/display-main-built.js?v=04020701\' src=\'https://static.sixshop.com/resources/libs/require/require.js?v=04020701\'><\/script>');
 				document.write(str);
-
-
 
 			} else {
 				// alert('dasf');

@@ -63,27 +63,30 @@
                   else document.getElementById('regionAmount').innerHTML = userAmount + "원";
 
                   if (region == 1) {
-                    regionImg = "img/Chungju.png";
-                    regionName = "청주지역 주차장";
+                    regionImg = "img/Region_1.png";
+                    regionName = "울량동 주차장";
                     document.getElementById('regionName').innerHTML = regionName;
                     document.getElementById('region_img').src =regionImg;
                     document.getElementById('region_img').style.cssText="background-image:url("+regionImg+")";
 
                   } else if (region == 2) {
-                    regionName = "서울지역 주차장";
+                    regionImg = "img/Region2.png";
+                    regionName = "내수로 주차장";
+                    document.getElementById('regionName').innerHTML = regionName;
+                    document.getElementById('region_img').src =regionImg;
+                    document.getElementById('region_img').style.cssText="background-image:url("+regionImg+")";
                   } else if (region == 3) {
-                    regionName = "경기지역 주차장";
+                    regionImg = "img/Region3.png";
+                    regionName = "복대동 주차장";
+                    document.getElementById('regionName').innerHTML = regionName;
+                    document.getElementById('region_img').src =regionImg;
+                    document.getElementById('region_img').style.cssText="background-image:url("+regionImg+")";
                   } else {
                     regionName = "서비스 지역이 아닙니다.";
                     document.getElementById('regionName').innerHTML = "결제할 요금이 없습니다.";
                     // document.getElementById('region_img').src =null;
                     // document.getElementById('region_img').style.cssText=null;
                   }
-
-
-
-
-
 
                 }
 
@@ -110,52 +113,53 @@
 
 
     function parse(str) {
-      var year = str.substring(0, 4);
-      var month = str.substring(5, 7);
-      var day = str.substring(8, 10);
+			var year = str.substring(0, 4);
+			var month = str.substring(5, 7);
+			var day = str.substring(8, 10);
 
-      var hour = str.substring(11, 13);
-      var minute = str.substring(14, 16);
-      var second = str.substring(17, 19);
-
-
-      return new Date(year, month - 1, day, hour, minute, second);
-
-    }
+			var hour = str.substring(11, 13);
+			var minute = str.substring(14, 16);
+			var second = str.substring(17, 19);
 
 
+			return new Date(year, month - 1, day, hour, minute, second);
 
-    function formatDate(date) {
-      var monthNames = [
-        "01", "02", "03",
-        "04", "05", "06", "07",
-        "08", "09", "10",
-        "11", "12"
-      ];
+		}
 
-      var amHour = [
-        "01", "02", "03",
-        "04", "05", "06", "07",
-        "08", "09"
-      ]
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
 
-      var hour = date.getHours();
-      if (hour < 10) {
-        hour = amHour[hour - 1];
-      }
-      var minute = date.getMinutes();
-      if (minute < 10) minute = '0' + minute;
-      var second = date.getSeconds();
-      if (second < 10) {
-        second = '0' + second;
-      }
 
-      return year + '-' + monthNames[monthIndex] + '-' + day + " " + hour + ":" + minute + ":" + second;
-    }
-  </script>
+		function formatDate(date) {
+			var monthNames = [
+				"01", "02", "03",
+				"04", "05", "06", "07",
+				"08", "09", "10",
+				"11", "12"
+			];
+
+			var amHour = [
+				"00", "01", "02", "03",
+				"04", "05", "06", "07",
+				"08", "09",
+			]
+			var day = date.getDate();
+			if (day < 10) day = "0" + day;
+			var monthIndex = date.getMonth();
+			var year = date.getFullYear();
+
+			var hour = date.getHours();
+			if (hour < 10) {
+				hour = amHour[hour];
+			}
+			var minute = date.getMinutes();
+			if (minute < 10) minute = '0' + minute;
+			var second = date.getSeconds();
+			if (second < 10) {
+				second = '0' + second;
+			}
+
+			return year + '-' + monthNames[monthIndex] + '-' + day + " " + hour + ":" + minute + ":" + second;
+		}
+	</script>
 
 
 

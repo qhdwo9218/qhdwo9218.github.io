@@ -5,7 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=edge" />
 	<meta charset="utf-8">
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -2657,7 +2658,7 @@
 <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 
-<body onbeforeunload="closePage(event)" oncontextmenu="return false" class="display display-home display desktop  document-loading">
+<body onbeforeunload="closePage(event)" >
 	<!--<![endif]-->
 
 	<div id="searchOptimizeTextDiv" style="position: absolute !important; top: -999999px !important; left: -999999px !important"></div>
@@ -2683,7 +2684,7 @@
 
 			<div class="mobileSideMenu">
 				<div class="headerLogoInMobileMenuWrapper">
-					<a id="headerLogoInMobileMenu" class="bottom" href="/">
+					<a id="headerLogoInMobileMenu" class="bottom" href="/ParkingSystem">
 						<span class="site-name">Q-Park</span>
 
 					</a>
@@ -2706,7 +2707,7 @@
 
 			<ul class="headerMenuListContents mobile">
 
-				<div data-pageno="422223" class="menu-navi menu-main pageMenu"><a class="menu-name" href="/">HOME</a>
+				<div data-pageno="422223" class="menu-navi menu-main pageMenu"><a class="menu-name" href="/ParkingSystem">HOME</a>
 					<div class="menu-opener"></div>
 					<div class="subMenuNaviListDiv">
 						<div class="subMenuNaviList"></div>
@@ -2718,7 +2719,7 @@
 						<div class="subMenuNaviList"></div>
 					</div>
 				</div>
-				<div data-pageno="426996" class="menu-navi menu-main pageMenu"><a class="menu-name" href="/">Q-Park소개</a>
+				<div data-pageno="426996" class="menu-navi menu-main pageMenu"><a class="menu-name" href="/miniromi/untitled-3">Q-Park소개</a>
 					<div class="menu-opener"></div>
 					<div class="subMenuNaviListDiv">
 						<div class="subMenuNaviList"></div>
@@ -2819,7 +2820,7 @@
 
 
 
-					<a id="headerLogo" class="headerLogo mobile site-element" data-itemType="logo" href="/"> <span class="site-name">Q-Park</span>
+					<a id="headerLogo" class="headerLogo mobile site-element" data-itemType="logo" href="/ParkingSystem"> <span class="site-name">Q-Park</span>
 
 
 					</a>
@@ -2855,7 +2856,7 @@
 						<div class="headerMenuListContents desktop">
 
 							<div data-pageno="422223" class="menu-navi menu-main pageMenu">
-								<a class="menu-name" href="/">HOME</a>
+								<a class="menu-name" href="/ParkingSystem">HOME</a>
 								<div class="menu-opener"></div>
 								<div class="subMenuNaviListDiv">
 									<div class="subMenuNaviList"></div>
@@ -2895,7 +2896,7 @@
 
 
 
-					<a id="headerLogo" class="headerLogo mobile site-element" data-itemType="logo" href="/"> <span class="site-name">Q-Park</span>
+					<a id="headerLogo" class="headerLogo mobile site-element" data-itemType="logo" href="/ParkingSystem"> <span class="site-name">Q-Park</span>
 
 
 					</a>
@@ -2928,7 +2929,7 @@
 							<div id='item5917328' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='2' data-sectionNo='2015172' data-itemNo='5917328' style='text-align: center;'>
 
 								<div id='itemElement5917328' class='item-element' style='width: 50%;'>
-									<a target="_self" href="/"> <img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518933691350.png'
+									<a target="_self" href="/ParkingSystem"> <img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518933691350.png'
 											src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518933691350_1000.png' />
 									</a>
 								</div>
@@ -3000,32 +3001,22 @@
 							</div>
 							<div id='item5917335' class='item-wrapper spacer-element' data-type='item' data-itemType='spacer-element' data-orderNo='1' data-sectionNo='2015173' data-itemNo='5917335' style=''>
 								<div id='itemElement5917335' class='item-element' style='height: 68px;'>
-									<form role="form" method="get" autocomplete="on">
-										<div class="search_form03" style="text-align: center">
-											<label for="CARNUMBER">차량번호입력</label> <input type="text" placeholder="빈칸없이입력해주세요" name="CARNUMBER" id="CARNUMBER" title="차량번호 입력" />
-											<button id="search2" type="submit" class="btn btn-primary btn-sm">조회하기 </button>
-										</div>
-
-									</form>
-
-
-
+									<!-- <form role="form" method="get" autocomplete="on"> -->
+									<div class="search_form03" style="text-align: center">
+										<label for="CARNUMBER">차량번호입력</label> <input type="text" placeholder="빈칸없이입력해주세요" id="CARNUMBER" title="차량번호 입력" />
+										<button id="carSearch" onclick="CarSearchClick();">조회하기 </button>
+									</div>
 									<script>
-										$("#search2").click(function() {
+										function CarSearchClick() {
 											var form_data = {
-												CARNUMBER: document.getElementById("CARNUMBER").value,
-
+												CARNUMBER: document.getElementById("CARNUMBER").value
 											};
-
-											console.log(form_data);
 											$.ajax({
 												type: "POST",
 												url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/CarSearch",
 												dataType: 'json',
 												data: form_data,
 												success: function(result) {
-													console.log(result + "   is result");
-													//var RESULT =JSON.parse(result);
 													var HEAD = result.HEAD;
 													console.log(HEAD);
 													var STATUS_CODE = HEAD.STATUS_CODE;
@@ -3045,56 +3036,16 @@
 														alert("결제할 요금이 없습니다.");
 														//$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
 													}
+												},
+												error:function(request,status,error){
+													console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
 												}
 											});
 											return false;
-										});
+										}
 									</script>
-
-
-									<script>
-										$("#item5917348").click(function() {
-											var form_data = {
-												CARNUMBER: document.getElementById("CARNUMBER").value,
-
-											};
-
-											console.log(form_data);
-											$.ajax({
-												type: "POST",
-												url: "https://203.255.92.139:10443/ParkingAPI/rest/SystemAPI/CarSearch",
-												dataType: 'json',
-												data: form_data,
-												success: function(result) {
-													console.log(result + "   is result");
-													//var RESULT =JSON.parse(result);
-													var HEAD = result.HEAD;
-													console.log(HEAD);
-													var STATUS_CODE = HEAD.STATUS_CODE;
-													if (STATUS_CODE == 100) {
-														var BODY = result.BODY;
-														console.log(BODY);
-														var LIST = BODY.LIST;
-														for (var i in LIST) {
-															console.log(LIST[i].STARTTIME);
-														}
-														var STARTTIME = LIST.STARTTIME;
-														console.log(STARTTIME);
-														window.location.href = "Lookup.html?CARNUMBER=" + document.getElementById("CARNUMBER").value;
-
-
-													} else {
-														alert("결제할 요금이 없습니다.");
-														//$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
-													}
-												}
-											});
-											return false;
-										});
-									</script>
-
-
-
 								</div>
 							</div>
 							<div id='item5917336' class='item-wrapper text-title' data-type='item' data-itemType='text-title' data-orderNo='2' data-sectionNo='2015173' data-itemNo='5917336' style=''>
@@ -3122,7 +3073,7 @@
 					<div class='section-background background-mask'></div>
 					<div class='section-background section-cover'></div>
 					<section id='section2015174' class='section' data-orderNo='3'>
-						<div data-columnNo='1' id='section2015174_column1' class='customSectionColumn column-1' style="cursor: pointer;" onclick="location.href='QrScanner.html';">
+						<div data-columnNo='1' id='section2015174_column1' class='customSectionColumn column-1' style="cursor: pointer;" onclick="location.href='QrScannerTest.html';">
 
 							<div id='item5917339' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='1' data-sectionNo='2015174' data-itemNo='5917339' style='text-align: center;'>
 								<div id='itemElement5917339' class='item-element' style='width: 45%;'>

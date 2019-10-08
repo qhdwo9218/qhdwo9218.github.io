@@ -5,12 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=edge" />
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.6/webfont.js?v=04020701"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<!-- <script type="text/javascript" src="/js/jquery.ajax-cross-origin.min.js"></script> -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 
 	<script>
 		$(document).ready(function() {
@@ -42,7 +42,7 @@
 					if (STATUS_CODE == 100) {
 						var BODY = result.BODY;
 						var LIST = BODY.LIST;
-					//	console.log(LIST);
+						console.log(LIST);
 						for (var i = 0; i < LIST.length; i++) {
 							var starttime = LIST[i].STARTTIME;
 							var startdate = LIST[i].STARTDATE;
@@ -56,15 +56,11 @@
 
 								var pardate = parse(formatDate(parse(STARTDATE)));
 								var nowDate = parse(formatDate(cDt));
-								//console.log(pardate);
-							//	console.log(nowDate);
 								var useTime = nowDate - pardate;
-							//	console.log(useTime);
-								userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
-							//	console.log(userAmount);
-								if (userAmount == 0 || userAmount < 0) userAmount = 500;
 
-							//	console.log(userAmount);
+								userAmount = Math.floor(useTime / 1000 / 60 / 10) * 500;
+
+								if (userAmount == 0 || userAmount < 0) userAmount = 500;
 
 								if (area == 1) {
 									if (carnumber == "" || carnumber == "null") carnumber = "차량번호 입력요망";
@@ -103,9 +99,7 @@
 									document.getElementById('textAmount6').innerHTML = userAmount + "원";
 								}
 							}
-
 						}
-
 					} else {
 						console.log(STATUS_CODE);
 
@@ -162,9 +156,6 @@
 
 			return year + '-' + monthNames[monthIndex] + '-' + day + " " + hour + ":" + minute + ":" + second;
 		}
-
-
-
 	</script>
 
 	<style>
@@ -2928,7 +2919,7 @@
 			<div class="row row-main desktop">
 				<div class="column header-left">
 
-					<a id="headerLogo" class="headerLogo desktop site-element" data-itemType="logo" href="/"> <span class="site-name">Q-Park</span>
+					<a id="headerLogo" class="headerLogo desktop site-element" data-itemType="logo" href="/ParkingSystem"> <span class="site-name">Q-Park</span>
 					</a>
 
 
@@ -2989,7 +2980,7 @@
 			<div class="row row-search mobile">
 				<div class="searchIcon icomoon-search systemIcon systemIconWeight_none" data-type="icon"></div>
 				<form class="headerSearchBar" action="" onsubmit="return false;">
-					<input type="search"  placeholder="검색">
+					<input type="search" / placeholder="검색">
 				</form>
 				<div class="closeSearchBar-btn icomoon-ic-close-small systemIcon systemIconWeight_none"></div>
 			</div>

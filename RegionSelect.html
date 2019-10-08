@@ -4,12 +4,10 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=edge" />
 	<meta charset="utf-8">
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.6/webfont.js?v=04020701"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> -->
 
 	<script>
 		$(document).ready(function() {
@@ -27,14 +25,14 @@
 						var count = 0;
 						var count2 = 0;
 						var count3=0;
-					//	console.log(LIST.length);
+						console.log(LIST.length);
 						for (var i = 0; i<LIST.length; i++) {
 							var REGION_ = LIST[i].REGION;
 							if (REGION_ == '1') count++;
 							else if (REGION_ == '2') count2++;
 							else if(REGION_ =='3') count3++;
-							//console.log(count);
-							//console.log(count2);
+							console.log(count);
+							console.log(count2);
 
 						}
 						document.getElementById('freespace').innerHTML = 6 - count + " 자리 남았습니다.";
@@ -53,9 +51,79 @@
 			return false;
 
 		});
-
 	</script>
 
+	<!-- <script>
+		window.onload = function() {
+
+			var canvas1 = document.getElementById("1Area");
+
+			var context1 = canvas1.getContext("2d");
+
+			var y = 110;
+			var ry = 50;
+			context1.beginPath();
+
+			context1.strokeStyle = "black"; //사각형 선 색
+
+			context1.lineWidth = 3; //사각형 선 두께
+
+			/**1지역**/
+			context1.font = "20pt '맑은 고딕'"
+			context1.fillText('청주지역', 25, y);
+			context1.rect(20, ry, 120, 100);
+			context1.stroke();
+
+			context1.fillText('1구역', 185, y);
+			context1.fillText('2구역', 265, y);
+			context1.fillText('3구역', 345, y);
+			context1.fillText('4구역', 425, y);
+			context1.fillText('5구역', 505, y);
+			context1.fillText('6구역', 585, y);
+			//context1.fillText('7구역', 665, y);
+			//context1.fillText('8구역', 745, y);
+			context1.strokeRect(180, ry, 80, 100);
+			context1.strokeRect(260, ry, 80, 100);
+			context1.strokeRect(340, ry, 80, 100);
+			context1.strokeRect(420, ry, 80, 100);
+			context1.strokeRect(500, ry, 80, 100);
+			context1.strokeRect(580, ry, 80, 100);
+			//context1.strokeRect(660, ry, 80, 100);
+			//context1.strokeRect(740, ry, 80, 100);
+
+			var canvas2 = document.getElementById("2Area");
+			var context2 = canvas2.getContext("2d");
+
+			context2.beginPath();
+
+			context2.strokeStyle = "black"; //사각형 선 색
+
+			context2.lineWidth = 3; //사각형 선 두께
+
+			context2.font = "20pt '맑은 고딕'"
+			context2.fillText('오창지역', 25, y);
+			context2.rect(20, ry, 120, 100);
+			context2.stroke();
+
+			context2.fillText('1구역', 185, y);
+			context2.fillText('2구역', 265, y);
+			context2.fillText('3구역', 345, y);
+			context2.fillText('4구역', 425, y);
+			context2.fillText('5구역', 505, y);
+			context2.fillText('6구역', 585, y);
+			//context2.fillText('7구역', 665, y);
+			//context2.fillText('8구역', 745, y);
+			context2.strokeRect(180, ry, 80, 100);
+			context2.strokeRect(260, ry, 80, 100);
+			context2.strokeRect(340, ry, 80, 100);
+			context2.strokeRect(420, ry, 80, 100);
+			context2.strokeRect(500, ry, 80, 100);
+			context2.strokeRect(580, ry, 80, 100);
+			//context2.strokeRect(660, ry, 80, 100);
+			//context2.strokeRect(740, ry, 80, 100);
+
+		};
+	</script> -->
 
 
 
@@ -2636,6 +2704,29 @@
 
 
 
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Q-Park",
+			"legalName": "경매인오피스",
+			"url": "https://auctioncourt.xyz",
+			"logo": "https://thumb.sixshop.kr?width=2000",
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer support",
+				"telephone": "010-9969-5699",
+				"email": "dr.choimin@gmail.com"
+			},
+			"sameAs":
+		}
+	</script>
+
+
+
+
+
+
 
 
 
@@ -2712,6 +2803,13 @@
     <link rel="stylesheet" href="https://static.sixshop.com/resources/css/common/ie9.css?v=04020701"/>
     <![endif]-->
 </head>
+<!--[if lt IE 9 ]>
+<body class="display display-home display desktop  document-loading ie8">
+<![endif]-->
+<!--[if IE 9 ]>
+<body class="display display-home display desktop  document-loading ie9">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
 
 <body class="display display-home display desktop  document-loading">
 	<!--<![endif]-->
@@ -2732,6 +2830,31 @@
 			data-blogPostShareUse="" data-blogPostNo="" data-orderType="" data-cartSize="0" data-buyKakaoCartNo="" data-buyNowCartNo="" data-snsShare_detail_info='' data-additionalDiscountType="" data-additionalDiscountRate=""
 			data-additionalAccumulateRate="" data-kcpSiteCd="" data-introAdultAuthUse="" data-adultAuthUse="" data-personalInfoCollectionAgreement="" data-settingApiKeysKakaoJavaScript="" data-settingApiKeysKakaoRestApi="" data-kakaoPlusFriendId=""></div>
 	</div>
+
+	<!--[if lt IE 9]>
+
+
+
+<div id="ie8header">
+    <div style="height:60px;">
+    </div>
+    <div class="banner-wrapper ie">
+        <div class="content">
+            <a class="logo ie">
+            </a>
+            <div class="info">
+                <span class="useBoth">Internet Explorer의 오래된 버전을 사용하고 있습니다. 오래된 버전에서는 사이트가 정상적으로 표시되지 않습니다. 지금 업그레이드하세요.</span>
+            </div>
+            <a class="btn bordered btn-white middle"
+               href="https://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank">
+                업그레이드하기
+            </a>
+        </div>
+    </div>
+</div>
+<![endif]-->
+
+	<!-- body section -->
 
 
 
@@ -2862,9 +2985,9 @@
 			</div>
 			<div class="row row-search mobile">
 				<div class="searchIcon icomoon-search systemIcon systemIconWeight_none" data-type="icon"></div>
-				<!-- <form class="headerSearchBar" action="" onsubmit="return false;">
+				<form class="headerSearchBar" action="" onsubmit="return false;">
 					<input type="search" onkeyup="require('shop/shop').common.goSearchResultPage(event)" / placeholder="검색">
-				</form> -->
+				</form>
 				<div class="closeSearchBar-btn icomoon-ic-close-small systemIcon systemIconWeight_none"></div>
 			</div>
 
@@ -2887,7 +3010,7 @@
 							</div>
 							<div id='item6005337' class='item-wrapper image' data-type='item' data-itemType='image' data-orderNo='2' data-sectionNo='2044805' data-itemNo='6005337' cid='item6005337' style='text-align: center;'>
 								<div id='itemElement6005337' class='item-element' style='width: 50%;'>
-									<a href="/"> <img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518933691350.png' src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518933691350_1000.png' />
+									<a href="/ParkingSystem"> <img class='img ratio-default' imgSrc='/uploadedFiles/50936/default/image_1518933691350.png' src='https://contents.sixshop.com/thumbnails/uploadedFiles/50936/default/image_1518933691350_1000.png' />
 									</a>
 								</div>
 							</div>
@@ -2946,15 +3069,15 @@
 					</section>
 				</div>
 
-				<c:set var='sum1' value='0' ></c:set>
-				<c:set var='sum2' value='0' ></c:set>
+				<c:set var='sum1' value='0' />
+				<c:set var='sum2' value='0' />
 				<c:forEach items="${AmountList}" var="AmountList">
 					<c:if test="${AmountList.REGION eq '1' }">
-						<c:set var='sum1' value="${sum1+1}" ></c:set>
+						<c:set var='sum1' value="${sum1+1}" />
 					</c:if>
 
 					<c:if test="${AmountList.REGION eq '2' }">
-						<c:set var='sum2' value="${sum2+1}" ></c:set>
+						<c:set var='sum2' value="${sum2+1}" />
 					</c:if>
 				</c:forEach>
 
