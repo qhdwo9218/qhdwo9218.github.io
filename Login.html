@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=edge" />
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.6/webfont.js?v=04020701"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
 
 
 
@@ -2656,7 +2655,7 @@
 			<div class="row row-main desktop">
 				<div class="column header-left">
 
-					<a id="headerLogo" class="headerLogo desktop site-element" data-itemType="logo" href="/"> <span class="site-name">Q-Park</span>
+					<a id="headerLogo" class="headerLogo desktop site-element" data-itemType="logo" href="/ParkingSystem"> <span class="site-name">Q-Park</span>
 					</a>
 
 
@@ -2673,7 +2672,7 @@
 						<div class="headerMenuListContents desktop">
 
 							<div data-pageno="422223" class="menu-navi menu-main pageMenu">
-								<a class="menu-name" href="/">HOME</a>
+								<a class="menu-name" href="/ParkingSystem">HOME</a>
 								<div class="menu-opener"></div>
 								<div class="subMenuNaviListDiv">
 									<div class="subMenuNaviList"></div>
@@ -2687,7 +2686,7 @@
 								</div>
 							</div>
 							<div data-pageno="426996" class="menu-navi menu-main pageMenu">
-								<a class="menu-name" href="/">Q-Park소개</a>
+								<a class="menu-name" href="/ParkingSystem">Q-Park소개</a>
 								<div class="menu-opener"></div>
 								<div class="subMenuNaviListDiv">
 									<div class="subMenuNaviList"></div>
@@ -2754,26 +2753,18 @@
 									var keyCode = window.event.keyCode;
 
 									if (keyCode == 13) {
-
 										var form_data = {
 											ID: document.getElementById("ID").value,
 											PW: document.getElementById("PW").value,
-
 										};
-
-									//	console.log(form_data);
 										$.ajax({
 											type: "POST",
 											url: "https://203.255.92.59:10443/ParkingAPI/rest/SystemAPI/Login",
 											dataType: 'json',
 											data: form_data,
 											success: function(result) {
-											//	console.log(result);
-												//var RESULT =JSON.parse(result);
 												var HEAD = result.HEAD;
-												console.log(HEAD);
 												var BODY = result.BODY;
-
 												var LIST = BODY.LIST;
 												var STATUS_CODE = HEAD.STATUS_CODE;
 
@@ -2788,15 +2779,13 @@
 														sessionStorage.setItem('id', document.getElementById("ID").value);
 														var position = sessionStorage.getItem('name');
 														var userId = sessionStorage.getItem('id');
-														//console.log(position);
-													//	console.log(userId);
 														alert(userName + "님 환영합니다.");
-														location.href = "/";
+														location.href = "/ParkingSystem";
 													}
 
 												} else if (STATUS_CODE == 106) {
 													alert("ID 또는 PW를 확인해주세요");
-													//console.log("????");
+													console.log("????");
 
 												}
 											}
@@ -2810,14 +2799,11 @@
 
 
 								$("#login2").click(function() {
-
-
 									var form_data = {
 										ID: document.getElementById("ID").value,
 										PW: document.getElementById("PW").value,
 
 									};
-
 
 									$.ajax({
 										type: "POST",
@@ -2825,41 +2811,25 @@
 										dataType: 'json',
 										data: form_data,
 										success: function(result) {
-										//	console.log(result);
-											//var RESULT =JSON.parse(result);
 											var HEAD = result.HEAD;
-											//console.log(HEAD);
 											var BODY = result.BODY;
-
 											var LIST = BODY.LIST;
 											var STATUS_CODE = HEAD.STATUS_CODE;
-
-
-
-
-											// console.log(BODY);
-											// console.log(LIST);
-											// console.log(userEmail);
-											// console.log(userName);
-
 											if (STATUS_CODE == 100) {
 												var userEmail = LIST[0].EMAIL;
 												var userName = LIST[0].NAME;
 												if (window.sessionStorage) {
-
 													sessionStorage.setItem('name', userName);
 													sessionStorage.setItem('id', document.getElementById("ID").value);
 													var position = sessionStorage.getItem('name');
 													var userId = sessionStorage.getItem('id');
-											//		console.log(position);
-											//		console.log(userId);
 													alert(userName + "님 환영합니다.");
-													location.href = "/";
+													location.href = "/ParkingSystem";
 												}
 
 											} else {
 												alert("ID 또는 PW를 확인해주세요");
-										//		console.log("????");
+												// console.log("????");
 
 											}
 										}
