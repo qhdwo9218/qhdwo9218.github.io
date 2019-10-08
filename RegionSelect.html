@@ -2946,15 +2946,15 @@
 					</section>
 				</div>
 
-				<c:set var='sum1' value='0' />
-				<c:set var='sum2' value='0' />
+				<c:set var='sum1' value='0' ></c:set>
+				<c:set var='sum2' value='0' ></c:set>
 				<c:forEach items="${AmountList}" var="AmountList">
 					<c:if test="${AmountList.REGION eq '1' }">
-						<c:set var='sum1' value="${sum1+1}" />
+						<c:set var='sum1' value="${sum1+1}" ></c:set>
 					</c:if>
 
 					<c:if test="${AmountList.REGION eq '2' }">
-						<c:set var='sum2' value="${sum2+1}" />
+						<c:set var='sum2' value="${sum2+1}" ></c:set>
 					</c:if>
 				</c:forEach>
 
